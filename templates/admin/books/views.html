@@ -1,0 +1,37 @@
+{%extends "/shared/admin_layout.html" %}
+
+{% block title %}Manage Books - View {% endblock %}
+
+{% block content %}
+	<div class="container">	
+		<div style="width:100%; margin-top: 3em;">
+			{% if msg %}
+				<div class="alert alert-success">{{msg}}</div>
+			{% endif %}
+		</div>
+
+		<div>
+			{% if books %}
+				{% for book in books %}
+				<div class="card book">
+				  <img src={{book['Imagine']}} class="card-img-top" alt="{{book[1]}}">
+				  <div class="card-body">
+				    <h5 class="card-title"><a href="{{book['ID']}}">{{book['Titlu']}}</a></h5>
+				    {% if book["DataImprumut"] %}
+				    	<span class="badge badge-warning" style="margin-bottom: 5px;">Carte împrumutată</span>
+					{% elif book["DataRezervare"] %}
+					    <span class="badge badge-warning" style="margin-bottom: 5px;">Carte rezervată</span>
+				    {% endif %}
+				    <p class="card-text bookdesc">{{book["desc"]}}</p>
+
+				    <p class="card-text">
+					</p>
+				  </div>
+				</div>
+				{% endfor %}
+			{% else %}
+				<p>No Books In Stash!</p>
+			{% endif %}	
+		</div>
+	</div>
+{% endblock %}

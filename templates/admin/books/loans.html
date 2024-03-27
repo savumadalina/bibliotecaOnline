@@ -1,0 +1,48 @@
+{%extends "/shared/admin_layout.html" %}
+
+{% block title %}Manage Books - View {% endblock %}
+
+{% block content %}
+	<div class="container">	
+		<div style="width:100%; margin-top: 3em;">
+			{% if msg %}
+				<div class="alert alert-success">{{msg}}</div>
+			{% endif %}
+			<form action="/admin/books/search" method="GET">
+			  <div class="form-group">
+			    <div style="width: 100%">
+			    <div style="width: 90%; display: inline-block;">
+			    <input type="search" name="keyword" autofocus class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{keyword}}" placeholder="Caută după carte sau email...">
+			    </div>
+				<button type="submit" style="margin-left: 5px;" class="btn btn-primary">Căutare</button>
+			    </div>
+			  </div>
+			</form>
+		</div>
+
+		<div>
+			<h2>Gestionează cărțile</h2>
+			{% if books %}
+				{% for book in books %}
+				<div class="card book">
+				  <img src={{book['Imagine']}} class="card-img-top" alt="{{book[1]}}">
+				  <div class="card-body">
+				    <h5 class="card-title">{{book['Titlu']}}</h5>
+				    <p class="card-text bookdesc">{{book["Email"]}}</p>
+					<span class="badge badge-warning" style="margin-bottom: 5px;">Carte rezervată</span>
+				    <p class="card-text">
+					</p>
+					<form method="get" action="">
+						<a href="{{book['ID_Rezervare']}}" class="btn btn-outline-primary">
+							<i class="bi bi-pen-fill"></i> Acceptă împrumut
+						</a>
+					</form>
+				  </div>
+				</div>
+				{% endfor %}
+			{% else %}
+				<p>Nici o carte rezervată!</p>
+			{% endif %}	
+		</div>
+	</div>
+{% endblock %}

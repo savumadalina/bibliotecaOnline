@@ -1,0 +1,26 @@
+{%extends "/shared/admin_layout.html" %}
+
+{% block title %}Admin Home{% endblock %}
+
+{% block head %}
+	{{ super() }}
+
+    <link rel="stylesheet" href="/static/home.css" />
+{% endblock %}
+
+{% block content %}
+	<div class="container d-flex h-75">
+	    <div class="row justify-content-center align-self-center welcome">
+	    	<h3>Bun venit!</h3>
+			<div style="width:100%">
+			<form action="/admin/books/search" method="GET">
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Căutare</label>
+			    <input type="search" name="keyword" autofocus class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Caută după carte sau email...">
+			  </div>
+			  <button type="submit" class="btn btn-primary">Căutare</button>
+			</form>
+			</div>
+	    </div>
+	</div>
+{% endblock %}

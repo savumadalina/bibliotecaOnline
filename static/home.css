@@ -1,0 +1,15 @@
+.welcome {
+	    margin: 0 auto;
+}
+
+.welcome h1 {
+	font-size: 3.5em;
+
+}
+
+.home {
+	background-image: url("/static/images/fundal.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	/* background-position: 0 0.0em;*/
+}

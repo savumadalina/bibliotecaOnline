@@ -1,0 +1,71 @@
+{%extends "/shared/layout.html" %}
+
+{% block title %}Books{% endblock %}
+
+{% block head %}
+	{{ super() }}
+
+    <link rel="stylesheet" href="/static/home.css" />
+{% endblock %}
+
+{% block content %}
+	<div class="container h-75">	
+		<div style="width:100%; margin-top: 3em;">
+			{% if msg %}
+				<div class="alert alert-success">{{msg}}</div>
+			{% endif %}
+			<form action="/books/search" method="GET">
+			  <div class="form-group">
+			    <div style="width: 100%">
+			    <div style="width: 90%; display: inline-block;">
+				{% if filtersButton %}
+				<button type="submit" style="margin-left: 5px;" class="btn btn-primary">Filtre</button>
+				{% endif %}
+				{% if genres  and filters%}
+					<p>Genuri:</p>
+					<div>
+					{% for genre in genres %}
+					<input type="checkbox" name="genres[]" id="checkboxGenuri{{genre['ID']}}" value="{{genre['ID']}}">
+					<label for="checkboxGenuri{{genre['ID']}}">{{genre['Nume']}}</label>
+					{% endfor %}
+					</div>
+				{% endif %}
+				{% if authors  and filters%}
+					<p>Autori:</p>
+					<div>
+					{% for author in authors %}
+					<input type="checkbox" name="authors[]" id="checkboxAutori{{author['ID']}}" value="{{author['ID']}}">
+					<label for="checkboxAutori{{author['ID']}}">{{author['Nume']}}</label>
+					{% endfor %}
+					</div>
+				{% endif %}
+				<input type="search" name="keyword" autofocus class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{keyword}}" placeholder="Caută o carte...">
+			    </div>
+				<button type="submit" style="margin-left: 5px;" class="btn btn-primary">Căutare</button>
+			    </div>
+			  </div>
+			</form>
+		</div>
+
+		<div style="width:100%; margin-top: 3em;">
+			{% if books %}
+				{% if search %}
+				<h4>Search Found ({{count}})</h4>
+				{% endif %}
+				{% for book in books %}
+				{% if book['Disponibilitate'] == 1 %}
+				<div class="card book">
+				  <img src={{book['Imagine']}} class="card-img-top" alt="{{book[1]}}">
+				  <div class="card-body">
+				    <h5 class="card-title"><a href="/books/{{book['ID']}}">{{book['Titlu']}}</a></h5>
+				    <p class="card-text bookdesc">{{book['Autor']}}</p>
+				  </div>
+				</div>
+				{% endif %}
+				{% endfor %}
+			{% else %}
+				<h4>Nici o carte găsită!</h4>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

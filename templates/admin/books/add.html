@@ -1,0 +1,49 @@
+{%extends "/shared/admin_layout.html" %}
+
+{% block title %}Manage Books - Add{% endblock %}
+
+{% block head %}
+	{{ super() }}
+
+    <link rel="stylesheet" href="/static/home.css" />
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="back" style="font-size: 1.5em;position: absolute;">
+			<a href="javascript:history.back()"><i class="bi bi-arrow-left"></i></a>
+		</div>
+		<div class="d-flex justify-content-center">
+			<form action="/admin/books/add" method="GET" class="col-md-5 ">
+			<h3>Adaugă o carte în bibliotecă</h3>
+			<div class="form-group">
+				<label for="title">Titlu</label>
+				<input type="text" name="title" class="form-control" id="title" required  placeholder="Introdu titlu cărții">
+			</div>
+			<div class="form-group">
+				<label for="autor">Autor</label>
+				<input type="text" name="autor" class="form-control" id="autor" required  placeholder="Introdu autorul cărții">
+			</div>
+			<div class="form-group">
+				<label for="gen">Gen</label>
+				<input type="text" name="gen" class="form-control" id="gen" required  placeholder="Introdu genul cărții">
+			</div>
+			<div class="form-group">
+				<label for="pg">PG</label>
+				<input type="text" name="pg" class="form-control" id="pg" required  placeholder="Introdu pg cărții">
+			</div>
+			<div class="form-group">
+				<label for="limba">Limba</label>
+				<input type="text" name="limba" class="form-control" id="limba" required  placeholder="Introdu limba cărții">
+			</div>
+			<div class="form-group">
+				<label for="imagine">Imagine</label>
+				<input type="text" name="imagine" class="form-control" id="imagine" required  placeholder="Introdu calea imaginii cărții">
+			</div>
+			<div class="form-group col-12">
+				<button type="submit" class="btn btn-primary">Adaugă</button>
+			</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}
