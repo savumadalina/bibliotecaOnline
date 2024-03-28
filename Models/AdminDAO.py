@@ -3,7 +3,7 @@ class AdminDAO():
 	
 	def __init__(self, DAO):
 		self.db = DAO
-		self.db.table = "utilizatori"
+		self.db.table = "Utilizatori"
 
 	def getById(self, id):
 		q = self.db.query("select * from @table where id='{}'".format(id))
