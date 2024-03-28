@@ -125,7 +125,7 @@ class BookDAO():
 		loanDate = datetime.datetime.now() + datetime.timedelta(days=14)
 		queryLoans = "insert into Imprumuturi (ID_Utilizator,ID_Carte,DataImprumut,DataReturnare) values ('{}','{}','{}','{}')".format(details['ID_Utilizator'],details['ID_Carte'],datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S'),loanDate.strftime('%Y-%m-%d %H:%M:%S'))
 		print(queryLoans)
-		queryReservations = "delete from rezervari where ID={}".format(id_reservation)
+		queryReservations = "delete from Rezervari where ID={}".format(id_reservation)
 
 		loans=self.db.query(queryLoans)
 		reservations=self.db.query(queryReservations)
