@@ -2,7 +2,7 @@ CREATE SCHEMA bibliotecaOnline;
 
 USE bibliotecaOnline;
 
---------  creare tabele 
+
 CREATE TABLE Utilizatori 
 ( ID INT PRIMARY KEY AUTO_INCREMENT, 
 Nume VARCHAR(100) NOT NULL, 
@@ -55,19 +55,19 @@ FOREIGN KEY (ID_Carte) REFERENCES Carti(ID) );
 INSERT INTO Genuri VALUES
 (1, 'Tehnic', 'test'),
 (2, 'Dragoste', 'test'),
-(3, 'Fantasy', 'test');
-
-INSERT INTO Genuri VALUES
+(3, 'Fantasy', 'test'),
 (4, 'Social', 'test');
+
 INSERT INTO Autori VALUES
-(3, 'J.K.Rowling', "Englez");
-INSERT INTO Autori VALUES
-(4, 'Marin Preda', "Român");
+(1, 'J.K.Rowling', "Englez"),
+(2, 'Marin Preda', "Român"),
+(3, 'Irina Binder', "Român");
+
 INSERT INTO Carti VALUES
-(1, '101 Ways To Be A Software Engineer', 1 , 13, 'Engleza',1,1,'/static/images/bg.jpg'),
-(2, 'Fluturi', 1, 12, 'Romana', 2,2,'/static/images/fluturi.jpg'),
-(3, 'Harry Potter', 0, 9, 'Romana', 3,3,'/static/images/harry.jpg');
+(1, 'Harry Potter', 1, 9, 'Romana', 3,1,'/static/images/harry.jpg'),
+(2, 'Morometii', 1, 12, 'Romana', 2,2,'/static/images/morometii.jpeg'),
+(3, 'Fluturi', 1, 9, 'Romana', 2,3,'/static/images/fluturi.jpg');
 
+INSERT INTO Utilizatori VALUES
+(1,'admin','admin@admin.com', '123456', 'Bibliotecar');
 commit;
-
-
